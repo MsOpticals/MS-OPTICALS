@@ -3,131 +3,47 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ms opticals</title>
-  <style>
-    * {
-      margin: 0; padding: 0;
-      box-sizing: border-box;
-      font-family: 'Arial', sans-serif;
-    }
-    body {
-      background-color: #111;
-      color: #fff;
-    }
-    nav {
-      background-color: #000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 30px;
-    }
-    nav h1 {
-      color: #0ff;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: bold;
-    }
-    nav a:hover {
-      color: #0ff;
-    }
-    .section {
-      padding: 40px 20px;
-      text-align: center;
-    }
-    .products {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
-      padding-top: 20px;
-    }
-    .card {
-      background: #222;
-      padding: 20px;
-      width: 200px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px #0ff4;
-    }
-    .card img {
-      width: 100%;
-      border-radius: 8px;
-    }
-    .card h3 {
-      margin: 10px 0 5px;
-    }
-    .card p {
-      color: #0ff;
-      font-weight: bold;
-    }
-    form {
-      max-width: 400px;
-      margin: auto;
-    }
-    input, textarea {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 5px;
-      border: none;
-    }
-    input[type="submit"] {
-      background-color: #0ff;
-      color: #000;
-      font-weight: bold;
-      cursor: pointer;
-    }
-  </style>
+  <title>MS OPTICALS - Home</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-  <nav>
-    <h1>Lenskart Look</h1>
-    <div>
-      <a href="#home">Home</a>
-      <a href="#shopping">Shopping</a>
-      <a href="#contact">Contact Us</a>
-    </div>
-  </nav>
-
-  <div id="home" class="section">
-    <h2>Welcome to the Trendiest Eyewear</h2>
-    <p>Discover stylish and affordable sunglasses. Inspired by Lenskart.</p>
-  </div>
-
-  <div id="shopping" class="section">
-    <h2>Shopping - Sunglasses Under ₹1000</h2>
-    <div class="products">
-      <div class="card">
-        <img src="https://images.lenskart.com/images/cust_mailer/Feb22/6-feb/Web/clipon-1.jpg" alt="Sunglasses 1" />
-        <h3>Classic Black</h3>
-        <p>₹999</p>
+  <header>
+    <div class="navbar">
+      <div class="logo">MS OPTICALS</div>
+      <input type="text" placeholder="Search eyewear..." class="search-bar" />
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="cart.html">Cart 🛒</a>
       </div>
-      <div class="card">
-        <img src="https://static.lenskart.com/media/desktop/img/Apr22/Our-Brands-Banner/Web/JohnJacobs.jpg" alt="Sunglasses 2" />
-        <h3>Retro Brown</h3>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>Stylish Eyewear, Affordable Prices</h1>
+    <p>Discover trendy sunglasses under ₹1000</p>
+    <a href="shop.html" class="btn">Shop Now</a>
+  </section>
+
+  <section class="products-preview">
+    <h2>Trending Sunglasses</h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="sunglass1.jpg" alt="Sunglass">
+        <h3>Classic Black</h3>
+        <p>₹799</p>
+      </div>
+      <div class="product-card">
+        <img src="sunglass2.jpg" alt="Sunglass">
+        <h3>Retro Round</h3>
         <p>₹899</p>
       </div>
-      <div class="card">
-        <img src="https://static.lenskart.com/media/desktop/img/Mar22/Sun/1x/Silver-Ban.jpg" alt="Sunglasses 3" />
-        <h3>Silver Mirror</h3>
-        <p>₹950</p>
-      </div>
     </div>
-  </div>
+  </section>
 
-  <div id="contact" class="section">
-    <h2>Contact Us</h2>
-    <p>For orders or feedback, reach out at:</p>
-    <form action="mailto:rrfitnessfact@gmail.com" method="POST">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
-      <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
-      <input type="submit" value="Send Message" />
-    </form>
-  </div>
-
+  <footer>
+    <p>&copy; 2025 MS OPTICALS | Inspired by Lenskart</p>
+  </footer>
 </body>
 </html>
