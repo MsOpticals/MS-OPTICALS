@@ -1,65 +1,107 @@
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
-  background: #f0f0f0;
-  color: #333;
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(to bottom, #000000, #ffffff);
+  color: #fff;
 }
-.navbar {
-  background: #000;
-  color: white;
-  display: flex;
-  padding: 10px 20px;
-  align-items: center;
-  justify-content: space-between;
-}
-.logo {
-  font-size: 24px;
-  font-weight: bold;
-}
-.nav-links a {
-  color: white;
-  margin-left: 15px;
-  text-decoration: none;
-}
-.search-bar {
-  padding: 5px;
-  width: 200px;
-}
-.hero {
-  background: url('hero-banner.jpg') no-repeat center center/cover;
-  color: white;
-  text-align: center;
-  padding: 100px 20px;
-}
-.hero .btn {
-  background: #ffcc00;
-  color: black;
-  padding: 10px 20px;
-  text-decoration: none;
-  font-weight: bold;
-}
-.product-grid {
-  display: flex;
-  gap: 20px;
+
+header {
+  background-color: #111;
   padding: 20px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 36px;
+}
+
+nav {
+  background-color: #222;
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
-}
-.product-card {
-  background: white;
+  align-items: center;
+  gap: 20px;
   padding: 10px;
-  border-radius: 8px;
-  width: 200px;
-  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
-.product-card img {
+
+nav a, nav input {
+  color: #fff;
+  background: transparent;
+  border: none;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 5px 10px;
+}
+
+nav a:hover {
+  color: #00ffcc;
+}
+
+nav input {
+  background-color: #333;
+  border-radius: 5px;
+  padding: 6px 10px;
+}
+
+.section {
+  padding: 40px 20px;
+  display: none;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+}
+
+.section.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.product {
+  background-color: #fff;
+  color: #000;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.product:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.product img {
   width: 100%;
-  height: auto;
-  border-radius: 8px;
+  border-radius: 10px;
 }
+
+.product h3 {
+  margin: 10px 0 5px;
+}
+
+.product p {
+  font-weight: bold;
+  color: #444;
+  margin: 0;
+}
+
 footer {
-  background: #222;
-  color: white;
+  background: #111;
+  color: #ccc;
   text-align: center;
-  padding: 10px 0;
+  padding: 20px;
+  font-size: 14px;
 }
