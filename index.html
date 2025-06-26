@@ -2,85 +2,76 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MS OPTICALS - Stylish Eyewear</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MS OPTICALS – Premium Eyewear</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
     <h1>MS OPTICALS</h1>
+    <p class="sub-title">Premium Eyewear, Trusted Quality</p>
   </header>
 
   <nav>
     <a href="#" onclick="showSection('home')">Home</a>
     <a href="#" onclick="showSection('sunglasses')">Sunglasses</a>
-    <a href="#" onclick="showSection('reading')">Reading Glasses</a>
-    <a href="#" onclick="showSection('computer')">Computer Glasses</a>
+    <a href="#" onclick="showSection('optical')">Optical Frames</a>
     <a href="#" onclick="showSection('contact')">Contact</a>
-    <input type="text" placeholder="Search eyewear...">
-    <a href="#" onclick="alert('Login system coming soon!')">👤 Login</a>
-    <a href="#" onclick="alert('Cart feature coming soon!')">🛒 Cart</a>
+    <input type="text" placeholder="Search...">
+    <a href="#" onclick="alert('Login feature coming soon')">👤 Login</a>
+    <a href="#" onclick="alert('Cart feature coming soon')">🛒 Cart</a>
   </nav>
 
-  <div id="home" class="section active">
-    <h2>Welcome to MS OPTICALS</h2>
-    <p>Explore high-quality frames, stylish sunglasses, and optical solutions like never before!</p>
+  <!-- Hero Section -->
+  <div id="home" class="section active hero-section">
+    <div class="hero-content">
+      <h2>Discover Style & Comfort</h2>
+      <p>From ultra-light titanium to classic frames, crafted for you.</p>
+      <button onclick="showSection('sunglasses')">Explore Now</button>
+    </div>
   </div>
 
+  <!-- Sunglasses Section -->
   <div id="sunglasses" class="section">
-    <h2>Trending Sunglasses</h2>
+    <h2>Sunglasses Collection</h2>
     <div class="grid">
       <div class="product">
-        <img src="https://images.unsplash.com/photo-1592878849129-99bb70c49e83" alt="Trendy Sunglass">
-        <h3>Aviator Style</h3>
-        <p>₹999</p>
+        <img src="https://images.unsplash.com/photo-1592878849129-99bb70c49e83" alt="Titan Style Sunglasses">
+        <h3>Pilot Titanium</h3>
+        <p>₹2,499</p>
       </div>
       <div class="product">
-        <img src="https://images.unsplash.com/photo-1588731234159-bb516aa78b8c" alt="Modern Sunglass">
-        <h3>Retro Round</h3>
-        <p>₹899</p>
+        <img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809" alt="Sport Sunglasses">
+        <h3>Sport Pro</h3>
+        <p>₹1,999</p>
       </div>
       <div class="product">
-        <img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809" alt="Cool Shades">
-        <h3>Sporty Shade</h3>
-        <p>₹950</p>
+        <img src="https://images.unsplash.com/photo-1588731234159-bb516aa78b8c" alt="Classic Round">
+        <h3>Round Classic</h3>
+        <p>₹1,799</p>
       </div>
     </div>
   </div>
 
-  <div id="reading" class="section">
-    <h2>Reading Glasses</h2>
+  <!-- Optical Frames Section -->
+  <div id="optical" class="section">
+    <h2>Optical Frames</h2>
     <div class="grid">
       <div class="product">
-        <img src="https://images.unsplash.com/photo-1567016549638-1b0d84b63bd2" alt="Reading Glass">
-        <h3>Smart Frame</h3>
-        <p>₹650</p>
+        <img src="https://images.unsplash.com/photo-1567016549638-1b0d84b63bd2" alt="Premium Optical">
+        <h3>Titanium Slim</h3>
+        <p>₹1,299</p>
       </div>
       <div class="product">
-        <img src="https://images.unsplash.com/photo-1570132257646-425eee4c7efc" alt="Lightweight Glass">
-        <h3>Lightweight Metal</h3>
-        <p>₹799</p>
+        <img src="https://images.unsplash.com/photo-1570132257646-425eee4c7efc" alt="Trendy Optical">
+        <h3>Urban Edge</h3>
+        <p>₹1,499</p>
       </div>
     </div>
   </div>
 
-  <div id="computer" class="section">
-    <h2>Computer Glasses</h2>
-    <div class="grid">
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1583337130417-3346a1a4b29a" alt="Blue Light">
-        <h3>Blue Light Blocker</h3>
-        <p>₹899</p>
-      </div>
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1573496547278-7b3f2f3aa9f7" alt="Office Glass">
-        <h3>Office Classic</h3>
-        <p>₹849</p>
-      </div>
-    </div>
-  </div>
-
+  <!-- Contact Section -->
   <div id="contact" class="section">
     <h2>Contact Us</h2>
     <p>Email: <a href="mailto:rrfitnessfact@gmail.com">rrfitnessfact@gmail.com</a></p>
@@ -88,6 +79,7 @@
       <a href="#">Instagram</a> |
       <a href="#">Facebook</a>
     </p>
+    <p>📞 +91 98765 43210</p>
   </div>
 
   <footer>
@@ -96,7 +88,9 @@
 
   <script>
     function showSection(id) {
-      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.section').forEach(s => {
+        s.classList.remove('active');
+      });
       document.getElementById(id).classList.add('active');
     }
   </script>
