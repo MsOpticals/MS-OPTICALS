@@ -1,45 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Shop - MS OPTICALS</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shop – Optivue</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <header>
-    <div class="navbar">
-      <div class="logo">MS OPTICALS</div>
-      <input type="text" placeholder="Search eyewear..." class="search-bar" />
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="shop.html">Shop</a>
-        <a href="contact.html">Contact</a>
-        <a href="cart.html">Cart 🛒</a>
-      </div>
-    </div>
+    <h1>OPTIVUE</h1>
+    <p class="slogan">Where Vision Meets Perfect</p>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="cart.html">Cart</a>
+      <a href="orders.html">Admin</a>
+      <a href="login.html">Login</a>
+    </nav>
   </header>
 
-  <section class="shop">
-    <h2>Shop Sunglasses under ₹1000</h2>
-    <div class="product-grid">
-      <div class="product-card">
-        <img src="sunglass1.jpg" alt="Sunglass">
-        <h3>Black Aviator</h3>
-        <p>₹999</p>
-        <button>Add to Cart</button>
-      </div>
-      <div class="product-card">
-        <img src="sunglass2.jpg" alt="Sunglass">
-        <h3>Blue Frame</h3>
-        <p>₹950</p>
-        <button>Add to Cart</button>
-      </div>
-    </div>
-  </section>
+  <h2>Our Categories</h2>
+  <div class="categories">
+    <button onclick="showCategory('sunglasses')">Sunglasses</button>
+    <button onclick="showCategory('powerframes')">Power Frames</button>
+    <button onclick="showCategory('contactlens')">Contact Lens</button>
+    <button onclick="showCategory('accessories')">Accessories</button>
+  </div>
 
-  <footer>
-    <p>&copy; 2025 MS OPTICALS</p>
-  </footer>
-</body>
-</html>
+  <div id="product-container" class="product-container"></div>
+
+  <script>
+    const products = {
+      sunglasses: [
+        { id: 1, name: "Aviator Black", price: "₹999", img: "images/sun1.jpg" },
+        { id: 2, name: "Classic Square", price: "₹1099", img: "images/sun2.jpg" },
+        { id: 3, name: "Gold Frame Brown", price: "₹1499", img: "images/sun3.jpg" },
+        { id: 4, name: "Jet Black Pro", price: "₹1299", img: "images/sun4.jpg" },
+        { id: 5, name: "Mirror Chrome", price: "₹1199", img: "images/sun5.jpg" },
+        { id: 6, name: "Bold Square", price: "₹1399", img: "images/sun6.jpg" },
+      ],
