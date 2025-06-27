@@ -72,5 +72,7 @@
       alert("Registration successful! You can now log in.");
     });
   </script>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/main.js"></script>
 </body>
 </html>
