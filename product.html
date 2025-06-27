@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Product View – Optivue</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>OPTIVUE</h1>
+    <p class="slogan">Where Vision Meets Perfect</p>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="cart.html">Cart</a>
+      <a href="orders.html">Admin</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </header>
+
+  <div id="product-details" class="product-detail-view"></div>
+
+  <script>
+    // Load product from query params
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get('name');
+    const img = params.get('img');
+    const price = params.get('price');
+
+    const container = document.getElementById("product-details");
+    if (name && img && price) {
+      container.innerHTML = `
+        <img src="${img}" alt="${name}" class="large-img" />
+        <h2>${name}</h2>
+        <p class="price">${price}</p>
+        <button onclick="addToCart()">Add to Cart</button>
+      `;
+    } else {
+      container.innerHTML = "<p>Product not found.</p>";
+    }
+
+    function addToCart() {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.push({ name, img, price });
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert("Added to cart!");
+    }
+  </script>
+</body>
+</html>
