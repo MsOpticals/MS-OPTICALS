@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checkout – Optivue</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>OPTIVUE</h1>
+    <p class="slogan">Where Vision Meets Perfect</p>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="cart.html">Cart</a>
+      <a href="orders.html">Admin</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </header>
+
+  <h2>Checkout</h2>
+  <form id="checkout-form">
+    <label for="name">Full Name:</label><br>
+    <input type="text" id="name" required><br>
+
+    <label for="address">Shipping Address:</label><br>
+    <textarea id="address" required></textarea><br>
+
+    <label for="payment">Payment Method:</label><br>
+    <select id="payment">
+      <option value="COD">Cash on Delivery</option>
+      <option value="UPI">UPI</option>
+      <option value="Card">Credit/Debit Card</option>
+    </select><br><br>
+
+    <button type="submit">Place Order</button>
+  </form>
+
+  <div id="confirmation" style="display:none;">
+    <h3>Order Placed Successfully!</h3>
+    <p>Tracking ID: <span id="track-id"></span></p>
+    <a href="index.html"><button>Back to Home</button></a>
+  </div>
+
+  <script>
+    document.getElementById('checkout-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const address = document.getElementById('address').value;
+      const payment = document.getElementById('payment').value;
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+      if (cart.length === 0) {
+        alert("Cart is empty!");
+        return;
+      }
+
+      const order = {
+        id: 'ORD' + Date.now(),
+        name,
+        address,
+        payment,
+        cart,
+        status: 'Pending'
+      };
+
+      let orders = JSON.parse(localStorage.getItem('orders')) || [];
+      orders.push(order);
+      localStorage.setItem('orders', JSON.stringify(orders));
+      localStorage.removeItem('cart'); // Empty cart
+
+      document.getElementById('checkout-form').style.display = 'none';
+      document.getElementById('confirmation').style.display = 'block';
+      document.getElementById('track-id').textContent = order.id;
+    });
+  </script>
+</body>
+</html>
