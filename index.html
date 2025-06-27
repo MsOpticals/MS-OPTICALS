@@ -1,46 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MS OPTICALS – Premium Eyewear</title>
-  <link rel="stylesheet" href="style.css" />
-  <script defer src="script.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Optivue - Where Vision Meets Perfect</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <header>
-    <h1>MS OPTICALS</h1>
+    <h1>OPTIVUE</h1>
+    <p class="slogan">Where Vision Meets Perfect</p>
+    <input type="text" id="searchBar" placeholder="Search sunglasses, lenses..." onkeyup="searchProducts()">
     <nav>
-      <a href="#products">Products</a>
-      <a href="#cart">Cart</a>
-      <a href="#orders">My Orders</a>
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="cart.html">Cart</a>
+      <a href="orders.html">Admin</a>
+      <a href="login.html">Login</a>
     </nav>
   </header>
 
-  <section id="products" class="product-list"></section>
-
-  <section id="cart" class="cart">
-    <h2>Your Cart</h2>
-    <ul id="cart-items"></ul>
-    <p>Total: ₹<span id="total-amount">0</span></p>
-
-    <h3>Choose Payment Option:</h3>
-    <select id="payment-method">
-      <option value="UPI">UPI</option>
-      <option value="Cash on Delivery">Cash on Delivery</option>
-      <option value="Card">Credit/Debit Card</option>
-    </select>
-
-    <button onclick="checkout()">Place Order</button>
-  </section>
-
-  <section id="orders" class="order-status">
-    <h2>Order History</h2>
-    <ul id="order-list"></ul>
+  <section id="hero">
+    <h2>Explore Our Premium Eyewear Collection</h2>
+    <a href="shop.html"><button>Shop Now</button></a>
   </section>
 
   <footer>
-    <p>© 2025 MS OPTICALS</p>
+    <p>Contact us: optivue.in@gmail.com | +91-9876543210</p>
   </footer>
+
+  <script src="js/main.js"></script>
 </body>
 </html>
