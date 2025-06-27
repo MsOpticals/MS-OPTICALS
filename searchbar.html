@@ -1,0 +1,26 @@
+// ===== Search Function =====
+function searchProducts() {
+  const input = document.getElementById('searchBar').value.toLowerCase();
+  const cards = document.querySelectorAll('.product-card');
+
+  cards.forEach(card => {
+    const name = card.querySelector('h3').textContent.toLowerCase();
+    if (name.includes(input)) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+// ===== Login Info (Optional UI Update) =====
+window.addEventListener('DOMContentLoaded', () => {
+  const user = localStorage.getItem('loggedInUser');
+  if (user) {
+    const nav = document.querySelector('nav');
+    const userDiv = document.createElement('span');
+    userDiv.textContent = `👋 Hi, ${user}`;
+    userDiv.style.marginLeft = '20px';
+    nav.appendChild(userDiv);
+  }
+});
