@@ -5,140 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MS OPTICALS – Premium Eyewear</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <script defer src="script.js"></script>
 </head>
 <body>
   <header>
     <h1>MS OPTICALS</h1>
-    <p class="sub-title">Premium Eyewear, Trusted Quality</p>
+    <nav>
+      <a href="#products">Products</a>
+      <a href="#cart">Cart</a>
+      <a href="#orders">My Orders</a>
+    </nav>
   </header>
 
-  <nav>
-    <a href="#" onclick="showSection('home')">Home</a>
-    <a href="#" onclick="showSection('sunglasses')">Sunglasses</a>
-    <a href="#" onclick="showSection('optical')">Optical Frames</a>
-    <a href="#" onclick="showSection('contact')">Contact</a>
-    <input id="searchBar" type="text" placeholder="Search products..." onkeyup="filterProducts()">
-    <a href="#" onclick="toggleLogin()">👤 Login</a>
-    <a href="#" onclick="showCart()">🛒 Cart (<span id="cartCount">0</span>)</a>
-  </nav>
+  <section id="products" class="product-list"></section>
 
-  <!-- Hero -->
-  <div id="home" class="section active hero-section">
-    <div class="hero-content">
-      <h2>Discover Style & Comfort</h2>
-      <p>From ultra-light titanium to classic frames, crafted for you.</p>
-      <button onclick="showSection('sunglasses')">Explore Now</button>
-    </div>
-  </div>
+  <section id="cart" class="cart">
+    <h2>Your Cart</h2>
+    <ul id="cart-items"></ul>
+    <p>Total: ₹<span id="total-amount">0</span></p>
 
-  <!-- Sunglasses -->
-  <div id="sunglasses" class="section">
-    <h2>Sunglasses Collection</h2>
-    <div class="grid" id="sunglassesGrid">
-      <!-- Product Cards -->
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1592878849129-99bb70c49e83" alt="Titan Style">
-        <h3>Pilot Titanium</h3>
-        <p>₹2,499</p>
-        <button onclick="addToCart('Pilot Titanium', 2499)">Add to Cart</button>
-      </div>
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809" alt="Sport Pro">
-        <h3>Sport Pro</h3>
-        <p>₹1,999</p>
-        <button onclick="addToCart('Sport Pro', 1999)">Add to Cart</button>
-      </div>
-    </div>
-  </div>
+    <h3>Choose Payment Option:</h3>
+    <select id="payment-method">
+      <option value="UPI">UPI</option>
+      <option value="Cash on Delivery">Cash on Delivery</option>
+      <option value="Card">Credit/Debit Card</option>
+    </select>
 
-  <!-- Optical -->
-  <div id="optical" class="section">
-    <h2>Optical Frames</h2>
-    <div class="grid" id="opticalGrid">
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1567016549638-1b0d84b63bd2" alt="Titanium Slim">
-        <h3>Titanium Slim</h3>
-        <p>₹1,299</p>
-        <button onclick="addToCart('Titanium Slim', 1299)">Add to Cart</button>
-      </div>
-    </div>
-  </div>
+    <button onclick="checkout()">Place Order</button>
+  </section>
 
-  <!-- Contact -->
-  <div id="contact" class="section">
-    <h2>Contact Us</h2>
-    <p>Email: <a href="mailto:rrfitnessfact@gmail.com">rrfitnessfact@gmail.com</a></p>
-    <p>📞 +91 98765 43210</p>
-  </div>
-
-  <!-- Login Modal -->
-  <div id="loginModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="toggleLogin()">&times;</span>
-      <h3>Login</h3>
-      <input type="email" placeholder="Email" />
-      <input type="password" placeholder="Password" />
-      <button onclick="alert('Login not yet functional')">Login</button>
-    </div>
-  </div>
-
-  <!-- Cart Modal -->
-  <div id="cartModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeCart()">&times;</span>
-      <h3>Your Cart</h3>
-      <ul id="cartItems"></ul>
-    </div>
-  </div>
+  <section id="orders" class="order-status">
+    <h2>Order History</h2>
+    <ul id="order-list"></ul>
+  </section>
 
   <footer>
-    &copy; 2025 MS OPTICALS. All rights reserved.
+    <p>© 2025 MS OPTICALS</p>
   </footer>
-
-  <script>
-    function showSection(id) {
-      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-    }
-
-    function toggleLogin() {
-      document.getElementById("loginModal").classList.toggle("show");
-    }
-
-    let cart = [];
-    function addToCart(name, price) {
-      cart.push({ name, price });
-      document.getElementById("cartCount").textContent = cart.length;
-      alert(`${name} added to cart.`);
-    }
-
-    function showCart() {
-      const list = document.getElementById("cartItems");
-      list.innerHTML = "";
-      if (cart.length === 0) {
-        list.innerHTML = "<li>Cart is empty</li>";
-      } else {
-        cart.forEach(item => {
-          const li = document.createElement("li");
-          li.textContent = `${item.name} - ₹${item.price}`;
-          list.appendChild(li);
-        });
-      }
-      document.getElementById("cartModal").classList.add("show");
-    }
-
-    function closeCart() {
-      document.getElementById("cartModal").classList.remove("show");
-    }
-
-    function filterProducts() {
-      const query = document.getElementById("searchBar").value.toLowerCase();
-      document.querySelectorAll(".product").forEach(product => {
-        const title = product.querySelector("h3").textContent.toLowerCase();
-        product.style.display = title.includes(query) ? "block" : "none";
-      });
-    }
-  </script>
 </body>
 </html>
