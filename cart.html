@@ -1,31 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cart - MS OPTICALS</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your Cart – Optivue</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <header>
-    <div class="navbar">
-      <div class="logo">MS OPTICALS</div>
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="shop.html">Shop</a>
-        <a href="contact.html">Contact</a>
-        <a href="cart.html">Cart 🛒</a>
-      </div>
-    </div>
+    <h1>OPTIVUE</h1>
+    <p class="slogan">Where Vision Meets Perfect</p>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="cart.html">Cart</a>
+      <a href="orders.html">Admin</a>
+      <a href="login.html">Login</a>
+    </nav>
   </header>
 
-  <section class="cart">
-    <h2>Your Cart</h2>
-    <p>No items yet. Start shopping!</p>
-  </section>
+  <h2>Your Shopping Cart</h2>
+  <div id="cart-container" class="product-container"></div>
+  <h3 id="total-price">Total: ₹0</h3>
+  <a href="checkout.html"><button>Proceed to Checkout</button></a>
 
-  <footer>
-    <p>&copy; 2025 MS OPTICALS</p>
-  </footer>
+  <script>
+    const cartContainer = document.getElementById('cart-container');
+    const totalPriceDisplay = document.getElementById('total-price');
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function renderCart() {
+      cartContainer.innerHTML = '';
+      let total = 0;
+
+      if (cart.length === 0) {
+        cartContainer.innerHTML = '<p>Your cart is empty.</p>';
+        totalPriceDisplay.textContent = 'Total: ₹0';
+        return;
+      }
+
+      cart.forEach((item, index) => {
+        const priceNum = parseInt(item.price.replace('₹', '')) || 0;
+        total += priceNum;
+
+        cartContainer.innerHTML += `
+          <div class="product-card">
+            <img src="${item.img}" alt="${item.name}">
+            <h3>${item.name}</h3>
+            <p>${item.price}</p>
+            <button onclick="removeFromCart(${index})">Remove</button>
+          </div>
+        `;
+      });
+
+      totalPriceDisplay.textContent = `Total: ₹${total}`;
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      renderCart();
+    }
+
+    renderCart();
+  </script>
 </body>
 </html>
