@@ -39,3 +39,36 @@
         { id: 5, name: "Mirror Chrome", price: "₹1199", img: "images/sun5.jpg" },
         { id: 6, name: "Bold Square", price: "₹1399", img: "images/sun6.jpg" },
       ],
+      powerframes: [],
+      contactlens: [],
+      accessories: []
+    };
+
+    function showCategory(category) {
+      const container = document.getElementById('product-container');
+      container.innerHTML = '';
+      products[category].forEach(p => {
+        container.innerHTML += `
+          <div class="product-card">
+            <img src="${p.img}" alt="${p.name}">
+            <h3>${p.name}</h3>
+            <p>${p.price}</p>
+            <button onclick="addToCart(${p.id}, '${category}')">Add to Cart</button>
+          </div>
+        `;
+      });
+    }
+
+    function addToCart(id, category) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const product = products[category].find(p => p.id === id);
+      cart.push(product);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(`${product.name} added to cart!`);
+    }
+
+    // Show sunglasses by default
+    showCategory('sunglasses');
+  </script>
+</body>
+</html>
