@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login – Optivue</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>OPTIVUE</h1>
+    <p class="slogan">Where Vision Meets Perfect</p>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="cart.html">Cart</a>
+      <a href="orders.html">Admin</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </header>
+
+  <div class="login-container">
+    <h2>Customer Login</h2>
+    <form id="loginForm">
+      <input type="text" id="loginUser" placeholder="Username" required />
+      <input type="password" id="loginPass" placeholder="Password" required />
+      <button type="submit">Login</button>
+    </form>
+
+    <h2>New User? Register</h2>
+    <form id="registerForm">
+      <input type="text" id="registerUser" placeholder="Username" required />
+      <input type="password" id="registerPass" placeholder="Password" required />
+      <button type="submit">Register</button>
+    </form>
+  </div>
+
+  <script>
+    const loginForm = document.getElementById('loginForm');
+    const registerForm = document.getElementById('registerForm');
+
+    loginForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const user = document.getElementById('loginUser').value;
+      const pass = document.getElementById('loginPass').value;
+
+      const users = JSON.parse(localStorage.getItem('users')) || [];
+
+      const match = users.find(u => u.username === user && u.password === pass);
+      if (match) {
+        alert("Login successful!");
+        localStorage.setItem("loggedInUser", user);
+        window.location.href = "index.html";
+      } else {
+        alert("Invalid credentials!");
+      }
+    });
+
+    registerForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const user = document.getElementById('registerUser').value;
+      const pass = document.getElementById('registerPass').value;
+
+      let users = JSON.parse(localStorage.getItem('users')) || [];
+      if (users.find(u => u.username === user)) {
+        alert("Username already exists!");
+        return;
+      }
+
+      users.push({ username: user, password: pass });
+      localStorage.setItem('users', JSON.stringify(users));
+      alert("Registration successful! You can now log in.");
+    });
+  </script>
+</body>
+</html>
