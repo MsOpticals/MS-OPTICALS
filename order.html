@@ -1,71 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin Orders – Optivue</title>
+  <title>Order - Optivue</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <header>
-    <h1>OPTIVUE</h1>
-    <p class="slogan">Where Vision Meets Perfect</p>
+    <h1>Place Your Order</h1>
     <nav>
       <a href="index.html">Home</a>
-      <a href="shop.html">Shop</a>
-      <a href="cart.html">Cart</a>
-      <a href="orders.html">Admin</a>
-      <a href="login.html">Login</a>
+      <a href="contact.html">Contact</a>
     </nav>
   </header>
 
-  <h2>Admin Dashboard – Orders</h2>
-  <div id="orders-container"></div>
+  <section class="welcome">
+    <form action="https://formspree.io/f/yourformid" method="POST">
+      <label>Your Name:</label><br/>
+      <input type="text" name="name" required><br/><br/>
 
-  <script>
-    const ordersContainer = document.getElementById('orders-container');
-    let orders = JSON.parse(localStorage.getItem('orders')) || [];
+      <label>Your Email:</label><br/>
+      <input type="email" name="email" required><br/><br/>
 
-    function renderOrders() {
-      if (orders.length === 0) {
-        ordersContainer.innerHTML = "<p>No orders yet.</p>";
-        return;
-      }
+      <label>Product Name:</label><br/>
+      <input type="text" name="product" required><br/><br/>
 
-      ordersContainer.innerHTML = '';
-      orders.forEach((order, index) => {
-        let itemsList = order.cart.map(item => `<li>${item.name} - ${item.price}</li>`).join('');
+      <label>Address:</label><br/>
+      <textarea name="address" rows="4" required></textarea><br/><br/>
 
-        ordersContainer.innerHTML += `
-          <div class="order-card">
-            <h3>Order ID: ${order.id}</h3>
-            <p><strong>Name:</strong> ${order.name}</p>
-            <p><strong>Address:</strong> ${order.address}</p>
-            <p><strong>Payment:</strong> ${order.payment}</p>
-            <p><strong>Status:</strong> <span id="status-${index}">${order.status}</span></p>
-            <ul>${itemsList}</ul>
-            <select onchange="updateStatus(${index}, this.value)">
-              <option value="">Update Status</option>
-              <option value="Shipped">Mark as Shipped</option>
-              <option value="Delivered">Mark as Delivered</option>
-              <option value="Cancelled">Cancel Order</option>
-            </select>
-            <hr>
-          </div>
-        `;
-      });
-    }
-
-    function updateStatus(index, newStatus) {
-      if (!newStatus) return;
-      orders[index].status = newStatus;
-      localStorage.setItem('orders', JSON.stringify(orders));
-      renderOrders();
-    }
-
-    renderOrders();
-  </script>
-<link rel="stylesheet" href="css/style.css">
-<script src="js/main.js"></script>
+      <button type="submit">Submit Order</button>
+    </form>
+  </section>
 </body>
 </html>
